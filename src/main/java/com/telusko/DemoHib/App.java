@@ -9,36 +9,30 @@ import org.hibernate.service.ServiceRegistry;
 
 public class App {
     public static void main(String[] args) {
-        Alien telusko = new Alien();
+        Laptop laptop = new Laptop();
+        laptop.setLid(101);
+        laptop.setLname("Dell");
 
-        AlienName an = new AlienName();
-        an.setFname("Tiberiu");
-        an.setLname("Popescu");
-        an.setMname("Raul");
+        Student student = new Student();
+        student.setName("Navin");
+        student.setRollno(1);
+        student.setMarks(50);
 
-        telusko.setAid(110);
-        telusko.setAname(an);
-        telusko.setColor("Green");
 
-        Configuration con = new Configuration().configure().addAnnotatedClass(Alien.class);
-
-//        ServiceRegistry reg = new SessionFactoryServiceRegistryBuilder.appl(con.getProperties());
-
-        ServiceRegistry reg = new StandardServiceRegistryBuilder().
+        Configuration con = new Configuration()
+                .configure()
+                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Laptop.class);
+        ServiceRegistry registry = new StandardServiceRegistryBuilder().
                 applySettings(con.getProperties()).build();
-
-        SessionFactory sf = con.buildSessionFactory(reg);
-
+        SessionFactory sf = con.buildSessionFactory(registry);
         Session session = sf.openSession();
 
-        Transaction tx = session.beginTransaction();
+        session.beginTransaction();
 
-        session.save(telusko);
+        session.save(laptop);
+        session.save(student);
 
-        telusko = session.get(Alien.class, 101);
-
-        tx.commit();
-
-        System.out.println(telusko);
+        session.getTransaction().commit();
     }
 }
