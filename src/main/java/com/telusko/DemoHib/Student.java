@@ -1,7 +1,8 @@
 package com.telusko.DemoHib;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -10,6 +11,16 @@ public class Student {
     private int rollno;
     private String name;
     private int marks;
+    @ManyToMany(mappedBy = "students")
+    private List<Laptop> laptops = new ArrayList<Laptop>();
+
+    public List<Laptop> getLaptops() {
+        return laptops;
+    }
+
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
+    }
 
     public int getRollno() {
         return rollno;

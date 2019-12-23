@@ -18,6 +18,21 @@ public class App {
         student.setRollno(1);
         student.setMarks(50);
 
+        student.getLaptops().add(laptop);
+        laptop.getStudents().add(student);
+//
+        Student student2 = new Student();
+        student2.setName("Navin");
+        student2.setRollno(2);
+        student2.setMarks(50);
+
+        Laptop laptop2 = new Laptop();
+        laptop2.setLid(102);
+        laptop2.setLname("Dell");
+//
+        student.getLaptops().add(laptop2);
+        laptop.getStudents().add(student2);
+
 
         Configuration con = new Configuration()
                 .configure()
@@ -32,6 +47,8 @@ public class App {
 
         session.save(laptop);
         session.save(student);
+        session.save(laptop2);
+        session.save(student2);
 
         session.getTransaction().commit();
     }
