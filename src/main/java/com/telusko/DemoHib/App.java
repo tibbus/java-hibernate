@@ -17,7 +17,7 @@ public class App {
         student.setName("Navin");
         student.setRollno(1);
         student.setMarks(50);
-
+// update github 2
         student.getLaptops().add(laptop);
         laptop.getStudents().add(student);
 
