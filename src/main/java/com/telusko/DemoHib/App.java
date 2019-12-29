@@ -12,7 +12,7 @@ public class App {
         Laptop laptop = new Laptop();
         laptop.setLid(101);
         laptop.setLname("Dell");
-
+// commit from github
         Student student = new Student();
         student.setName("Navin");
         student.setRollno(1);
