@@ -34,7 +34,7 @@ public class App {
 
         session.save(laptop);
         session.save(student);
-        // test git23
+        // test git234
         session.getTransaction().commit();
     }
 }
