@@ -31,7 +31,7 @@ public class App {
         Session session = sf.openSession();
 
         session.beginTransaction();
-
+//git test
         session.save(laptop);
         session.save(student);
 // git test gg hh  66
